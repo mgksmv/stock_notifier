@@ -18,6 +18,9 @@ BOT_API_KEY = os.getenv('BOT_API_KEY')
 # Set up your Telegram user ID (search for @userinfobot)
 USER_ID = os.getenv('CHAT_ID')
 
+# The percentage of the stock increasing/decreasing
+PERCENTAGE = 5
+
 
 def percentage_change():
     endpoint = 'https://www.alphavantage.co/query'
@@ -55,7 +58,7 @@ def get_articles():
     return three_articles
 
 
-if percentage_change() >= 5 or percentage_change() <= -5:
+if percentage_change() >= PERCENTAGE or percentage_change() <= -PERCENTAGE:
     if percentage_change() > 0:
         arrow = '🔺'
     else:
